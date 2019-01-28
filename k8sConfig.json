@@ -1,0 +1,36 @@
+{
+  "apiVersion": "extensions/v1beta1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "pennez-product"
+  },
+  "spec": {
+    "replicas": 1,
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "nodejs",
+          "run": "pennez-product"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "pennez-product",
+            "image": "gcr.io/diesel-thunder-188721/pennez-product",
+            "ports": [
+              {
+                "containerPort": 8881
+              }
+            ]
+          }
+        ],
+        "imagePullSecrets": [
+          {
+            "name": "gcr-json-key"
+          }
+        ]
+      }
+    }
+  }
+}
