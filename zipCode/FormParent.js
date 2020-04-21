@@ -7,7 +7,7 @@ import ParentSchema from "./ParentSchema";
 import Background from '/Users/booboo/Documents/CPT/pennez/zipCode/client/src/components/signup/chalkboard.png'
 import { render } from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Checkbox from 'material-ui/Checkbox';
+import {Checkbox} from '@material-ui/core';
 var sectionStyle = {
   width: "98%",
   height: "750px",
