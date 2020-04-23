@@ -47,6 +47,11 @@ passport.use(
         console.log("Invalid Password");
         return done(null, false, { message: "password Not found." });
       }
+      if (user.accountType != parent){
+        console.log("wrong accout type");
+        return done(null,false,{message:"wrong accout type, please choose the right one as you register"})
+      } 
+
       console.log(user);
       return done(null, user);
     });
