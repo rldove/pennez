@@ -16,6 +16,7 @@ Meanwhile, use IDE open the code, the code structure should be like this:
 
 This is a full stack web app. The code includes client and server. Client folder in on the screenshot as you can find. And other files are belonging to server side normally. 
 
+
 Back to terminal:
 4.	Configure the code env.
 a.	‘npm install’ 
