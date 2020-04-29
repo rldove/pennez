@@ -1,59 +1,57 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
-// const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql');
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
+require('dotenv').config()
 
-const Schema = require('./schema');
+require("./models/parentUsers");
+require("./models/teacherUsers");
+// require("./models/googleUser");
+require("./models/Survey");
+require("./models/Student");
+require("./models/VoiceClip");
+require("./models/readingSource");
+// require("./services/passport");
+require("./services/passportAll");
+// require("./services/passportStudent");
 
-const PORT = 8881;
+mongoose.connect(process.env.MONGO_URI);
 
-const server = express();
+const app = express();
 
-var cors = require('cors');
+app.use(bodyParser.json());
 
-const schemaFunction =
-  Schema.schemaFunction ||
-  function () {
-    return Schema.schema;
-  };
-let schema;
-const rootFunction =
-  Schema.rootFunction ||
-  function () {
-    return schema.rootValue;
-  };
-const contextFunction =
-  Schema.context ||
-  function (headers, secrets) {
-    return Object.assign(
-      {
-        headers: headers,
-      },
-      secrets
-    );
-  };
+app.use(
+	cookieSession({
+		maxAge: 30 * 24 * 60 * 60 * 1000,
+		keys: [process.env.COOKIE_KEY]
+	})
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
-server.use('/graphql', cors(), bodyParser.json(), graphqlExpress(async (request) => {
-  if (!schema) {
-    schema = schemaFunction(process.env)
-  }
-  const context = await contextFunction(request.headers, process.env);
-  const rootValue = await rootFunction(request.headers, process.env);
+require("./routes/authParentRoutes")(app);
+require("./routes/authTeacherRoute")(app);
+require("./routes/studentRoutes")(app);
+require("./routes/awsTranscribeRoutes")(app);
+require("./routes/readingSourceRoutes")(app);
+require("./routes/authAdminRoutes")(app);
+// require("./routes/surveyRoutes")(app);
 
-  return {
-    schema: await schema,
-    rootValue,
-    context,
-    tracing: true,
-  };
-}));
+if (process.env.NODE_ENV === "production") {
+	// express will serve up production assets
+	// Like our main.js file, or main.css file
+	app.use(express.static("client/build"));
+	// Express will serve up the index.html file
+	// if it doesn't recognize the route
+	const path = require("path");
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+	});
+}
 
-server.use('/graphiql', graphiqlExpress({
-  endpointURL: '/graphql',
-  query: ``,
-}));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT);
 
-server.listen(PORT, () => {
-  console.log(`GraphQL Server is now running on http://localhost:${PORT}/graphql`);
-  console.log(`View GraphiQL at http://localhost:${PORT}/graphiql`);
-});
+// npm run dev
