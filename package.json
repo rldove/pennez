@@ -8,7 +8,7 @@
 	"scripts": {
 		"dev": "concurrently \"npm run dev --prefix server\" \"npm run start --prefix client\"",
 		"build": "concurrently \"npm run build --prefix server\" \"npm run build --prefix client\"",
-		"start": "concurrently \"npm run start --prefix server\" \"npm run start --prefix server\"",
+		"start": "concurrently \"npm run start --prefix server\" \"npm run start --prefix client\"",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
