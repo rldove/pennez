@@ -5,15 +5,15 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 require('dotenv').config()
 
-require("./models/parentUsers");
-require("./models/teacherUsers");
-// require("./models/googleUser");
-require("./models/Survey");
-require("./models/Student");
-require("./models/VoiceClip");
-require("./models/readingSource");
+require("./server/models/parentUsers");
+require("./server/models/teacherUsers");
+// require("./server/models/googleUser");
+require("./server/models/Survey");
+require("./server/models/Student");
+require("./server/models/VoiceClip");
+require("./server/models/readingSource");
 // require("./services/passport");
-require("./services/passportAll");
+require("./server/services/passportAll");
 // require("./services/passportStudent");
 
 mongoose.connect(process.env.MONGO_URI);
@@ -31,13 +31,13 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-require("./routes/authParentRoutes")(app);
-require("./routes/authTeacherRoute")(app);
-require("./routes/studentRoutes")(app);
-require("./routes/awsTranscribeRoutes")(app);
-require("./routes/readingSourceRoutes")(app);
-require("./routes/authAdminRoutes")(app);
-// require("./routes/surveyRoutes")(app);
+require("./server/routes/authParentRoutes")(app);
+require("./server/routes/authTeacherRoute")(app);
+require("./server/routes/studentRoutes")(app);
+require("./server/routes/awsTranscribeRoutes")(app);
+require("./server/routes/readingSourceRoutes")(app);
+require("./server/routes/authAdminRoutes")(app);
+// require("./server/routes/surveyRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
 	// express will serve up production assets
