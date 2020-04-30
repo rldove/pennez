@@ -1,5 +1,24 @@
 Web App DOC
 
+
+git clone
+
+cd into directory
+
+npm install
+
+cd client && npm install
+
+cd ..
+
+
+Local Development
+
+npm run dev
+
+
+
+
 Answer for A and B: 
 	Code is not updated since I left. I will send the original code package with the email for them.
 For question C: 
