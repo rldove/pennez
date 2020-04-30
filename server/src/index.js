@@ -1,26 +1,27 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const cookieSession = require("cookie-session");
-const passport = require("passport");
-require('dotenv').config()
+import express from "express";
+import { json } from "body-parser";
+import { connect } from "mongoose";
+import cookieSession from "cookie-session";
+import passport from "passport";
+import dotenv from "dotenv"
+dotenv.config()
 
-require("./models/parentUsers");
-require("./models/teacherUsers");
-// require("./models/googleUser");
-require("./models/Survey");
-require("./models/Student");
-require("./models/VoiceClip");
-require("./models/readingSource");
+import "./models/parentUsers";
+import "./models/teacherUsers";
+// require("./server/models/googleUser");
+import "./models/Survey";
+import "./models/Student";
+import "./models/VoiceClip";
+import "./models/readingSource";
 // require("./services/passport");
-require("./services/passportAll");
+import "./services/passportAll";
 // require("./services/passportStudent");
 
-mongoose.connect(process.env.MONGO_URI);
+connect(process.env.MONGO_URI);
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(json());
 
 app.use(
 	cookieSession({
@@ -37,12 +38,12 @@ require("./routes/studentRoutes")(app);
 require("./routes/awsTranscribeRoutes")(app);
 require("./routes/readingSourceRoutes")(app);
 require("./routes/authAdminRoutes")(app);
-// require("./routes/surveyRoutes")(app);
+// require("./server/routes/surveyRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
 	// express will serve up production assets
 	// Like our main.js file, or main.css file
-	app.use(express.static("client/build"));
+	app.use(express.static("../client/build"));
 	// Express will serve up the index.html file
 	// if it doesn't recognize the route
 	const path = require("path");
