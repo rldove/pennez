@@ -1,5 +1,5 @@
 {
-	"name": "alexproject",
+	"name": "pennez",
 	"version": "1.0.0",
 	"description": "Web App DOC",
 	"main": "index.js",
@@ -13,12 +13,12 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/amlcodes/pennez.git"
+		"url": "git+https://github.com/rldove/pennez.git"
 	},
 	"author": "",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/amlcodes/pennez/issues"
+		"url": "https://github.com/rldove/pennez/issues"
 	},
-	"homepage": "https://github.com/amlcodes/pennez#readme"
+	"homepage": "https://github.com/rldove/pennez#readme"
 }
