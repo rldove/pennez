@@ -1,26 +1,26 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const cookieSession = require("cookie-session");
-const passport = require("passport");
+import express from "express";
+import { json } from "body-parser";
+import { connect } from "mongoose";
+import cookieSession from "cookie-session";
+import passport from "passport";
 require('dotenv').config()
 
-require("./models/parentUsers");
-require("./models/teacherUsers");
+import "./models/parentUsers";
+import "./models/teacherUsers";
 // require("./server/models/googleUser");
-require("./models/Survey");
-require("./models/Student");
-require("./models/VoiceClip");
-require("./models/readingSource");
+import "./models/Survey";
+import "./models/Student";
+import "./models/VoiceClip";
+import "./models/readingSource";
 // require("./services/passport");
-require("./services/passportAll");
+import "./services/passportAll";
 // require("./services/passportStudent");
 
-mongoose.connect(process.env.MONGO_URI);
+connect(process.env.MONGO_URI);
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(json());
 
 app.use(
 	cookieSession({
