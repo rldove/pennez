@@ -3,7 +3,8 @@ import { json } from "body-parser";
 import { connect } from "mongoose";
 import cookieSession from "cookie-session";
 import passport from "passport";
-require('dotenv').config()
+import dotenv from "dotenv"
+dotenv.config()
 
 import "./models/parentUsers";
 import "./models/teacherUsers";
