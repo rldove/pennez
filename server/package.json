@@ -8,9 +8,10 @@
 		"npm": "5.0.3"
 	},
 	"scripts": {
-		"start": "node dist/index.js",
-		"dev": "nodemon src/index.js --exec ./node_modules/.bin/babel-node --presets=@babel/preset-env",
-		"build": "./node_modules/.bin/babel src -d dist"
+		"dev": "cross-env NODE_ENV=development concurrently \"npm run dev --prefix server\" \"npm run start --prefix client\"",
+		"build": "concurrently \"npm run build --prefix server\" \"npm run build --prefix client\"",
+		"start": "cross-env NODE_ENV=production concurrently \"npm run start --prefix server\" ",
+		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",
 	"license": "ISC",
