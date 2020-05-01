@@ -1,21 +1,26 @@
 {
     "dev": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-pennez-dev-230503-authRole",
-            "UnauthRoleArn": "arn:aws:iam::713829217768:role/amplify-pennez-dev-230503-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::713829217768:role/amplify-pennez-dev-230503-authRole",
+            "AuthRoleName": "amplify-pennez-dev-231921-authRole",
+            "UnauthRoleArn": "arn:aws:iam::713829217768:role/amplify-pennez-dev-231921-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::713829217768:role/amplify-pennez-dev-231921-authRole",
             "Region": "us-east-2",
-            "DeploymentBucketName": "amplify-pennez-dev-230503-deployment",
-            "UnauthRoleName": "amplify-pennez-dev-230503-unauthRole",
-            "StackName": "amplify-pennez-dev-230503",
-            "StackId": "arn:aws:cloudformation:us-east-2:713829217768:stack/amplify-pennez-dev-230503/8e626f20-8b58-11ea-92a0-0a7adbd72fc8",
-            "AmplifyAppId": "d1mnwkht3yt0we"
+            "DeploymentBucketName": "amplify-pennez-dev-231921-deployment",
+            "UnauthRoleName": "amplify-pennez-dev-231921-unauthRole",
+            "StackName": "amplify-pennez-dev-231921",
+            "StackId": "arn:aws:cloudformation:us-east-2:713829217768:stack/amplify-pennez-dev-231921/8def2900-8b5a-11ea-8353-0a9fc5c4303c",
+            "AmplifyAppId": "d36ciljpg8glbu"
         },
         "categories": {
             "hosting": {
                 "amplifyhosting": {
-                    "appId": "d1mnwkht3yt0we",
+                    "appId": "d36ciljpg8glbu",
                     "type": "cicd"
+                }
+            },
+            "auth": {
+                "pennez53998071": {
+                    "hostedUIProviderCreds": "[]"
                 }
             }
         }

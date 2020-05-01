@@ -1,0 +1,13 @@
+{
+    "resourceName": "pennezTranscribe",
+    "convertPolicyName": "transcriptionPolicy10b5cb50",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "convertType": "transcription",
+    "language": "en-US",
+    "access": "auth"
+}
