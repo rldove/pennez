@@ -7,7 +7,11 @@ const Parents = mongoose.model("parents");
 module.exports = app => {
 	app.post(
 		"/api/parent/login",
-		passport.authenticate("parent-local", {
+		passport.authenticate("parent-local", (err, user, info) => {
+			if (err) {
+				console.log({ err: err })
+				res.send(err)
+			}
 			successRedirect: "/api/current_user"
 		}),
 		(req, res) => {

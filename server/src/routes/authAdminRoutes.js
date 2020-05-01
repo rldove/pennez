@@ -1,4 +1,3 @@
-const passport = require("passport");
 const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin");
 
