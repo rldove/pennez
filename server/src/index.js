@@ -39,6 +39,7 @@ require("./routes/awsTranscribeRoutes")(app);
 require("./routes/readingSourceRoutes")(app);
 require("./routes/authAdminRoutes")(app);
 // require("./server/routes/surveyRoutes")(app);
+console.log(process.env)
 
 if (process.env.NODE_ENV === "production") {
 	// express will serve up production assets
@@ -47,8 +48,8 @@ if (process.env.NODE_ENV === "production") {
 	// Express will serve up the index.html file
 	// if it doesn't recognize the route
 	const path = require("path");
-	app.get("*", (req, res) => {
-		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+	app.get('/*', function (req, res) {
+		res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
 	});
 }
 
