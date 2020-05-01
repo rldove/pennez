@@ -39,7 +39,6 @@ require("./routes/awsTranscribeRoutes")(app);
 require("./routes/readingSourceRoutes")(app);
 require("./routes/authAdminRoutes")(app);
 // require("./server/routes/surveyRoutes")(app);
-console.log(process.env)
 
 if (process.env.NODE_ENV === "production") {
 	// express will serve up production assets
