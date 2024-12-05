@@ -113,7 +113,9 @@ class AccountLoginOption extends Component {
               style={{ textAlign: "center", color: "teal", fontSize: 30 }}
             >
               Login......
+              
             </span>
+            
           </div>
           <div className="card-action">
             <div
@@ -130,7 +132,8 @@ class AccountLoginOption extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
+  console.log('test' + JSON.stringify(state));
+
   if (state.loginError) {
     return {
       formLoginValues: state.form.LoginForm.values,
@@ -140,6 +143,7 @@ function mapStateToProps(state) {
   return {
     formLoginValues: state.form.LoginForm.values
   };
+
 }
 
 export default connect(
